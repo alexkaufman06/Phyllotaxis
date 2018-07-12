@@ -1,6 +1,7 @@
 var n = 0;
 var c = 4; // scaling factor (how much the radius is changing) (2)
 var slider;
+var seeds = [];
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -8,10 +9,11 @@ function setup() {
   colorMode(HSB);
   background(0);
   slider = createSlider(0, 360, 137.5, .1); // 137.3 for other pattern
-  slider.position(20,20);
+  slider.position(20,40);
 }
 
 function draw() {
+  // clear(); background(0);  // creates cool pattern 
   angle = slider.value();
   var a = n * angle;
   var r = c * sqrt(n);
@@ -20,6 +22,12 @@ function draw() {
   fill(n % 256, 255, 255); // can change n to a;
   noStroke(); // comment out for different effect
   ellipse(x, y, 4, 4); // 8, 8
+  rect(window.innerWidth - 135, 10, 120, 10);
+  fill(0);
+  rect(50, 5, 120, 40);
+  fill(255);
+  textSize(20);
+  text("Angle: " + angle, 30, 30);
   n++;
 }
 
