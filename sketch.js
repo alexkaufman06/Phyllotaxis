@@ -1,8 +1,7 @@
-var n = 0;
-// var c = 4; // scaling factor (how much the radius is changing) (2)
+var n = 0; // could add slider to control n value as well
 var angleSlider;
-var scaleSlider;
-var seeds = [];
+var scaleSlider; // (how much the radius is changing)
+var seeds = []; // use this later with reset a sketch
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
@@ -17,8 +16,7 @@ function setup() {
 
 function draw() {
   // clear(); background(0);  // creates cool pattern 
-  angle = angleSlider.value();
-  var a = n * angle;
+  var a = n * angleSlider.value();
   var r = scaleSlider.value() * sqrt(n);
   var x = r * cos(a) + width / 2 ;
   var y = r * sin(a) + height / 2;
@@ -28,9 +26,11 @@ function draw() {
   rect(26, 60, 120, 10);
   fill(0);
   rect(50, 5, 120, 40);
+  rect(60, 45, 90, 70);
   fill(255);
   textSize(20);
-  text("Angle: " + angle, 30, 30);
+  text("Angle: " + angleSlider.value(), 30, 30);
+  text("Scale: " + scaleSlider.value(), 50, 110);
   n++;
 }
 
