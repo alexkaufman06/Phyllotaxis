@@ -2,6 +2,9 @@ var n = 0; // could add slider to control n value as well
 var angleSlider;
 var scaleSlider; // (how much the radius is changing)
 var seeds = []; // use this later with reset a sketch
+// var flowerAngles = [ 147.4, 139.9, 137.3, 137.1, 65.4 ];
+// 216.8 (flower but needs to start at this angle) move quickly;
+// var crosshairAngles = [ 90 ];
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
