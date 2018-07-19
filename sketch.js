@@ -3,12 +3,13 @@ var angleSlider;
 var play = false;
 var scaleSlider; // (how much the radius is changing)
 var seeds = []; // use this later with reset a sketch
-// var flowerAngles = [ 147.4, 139.9, 137.3, 137.1, 65.4 ];
+var button, hx, red, g, b, c;
+// var flowerAngles = [ 147.4, 139.9, 137.3, 137.1, 135.1, 65.4 ];
 // 216.8, 90.1 (flower but needs to start at this angle) move quickly;
 // var crosshairAngles = [ 90 ];
 
 function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
+  var cnv = createCanvas(window.innerWidth, window.innerHeight);
   angleMode(DEGREES); // comment out for different effect
   colorMode(HSB);
   background(0);
@@ -16,9 +17,9 @@ function setup() {
   angleSlider.position(20,40);
   scaleSlider = createSlider(0, 15, 4, .1);
   scaleSlider.position(20, 70);
-  var button = createButton("Play/Pause");
+  button = createButton("Play/Pause");
   button.mousePressed(playSwitch);
-  button.position(window.innerWidth - 80, 10);
+  button.position(window.innerWidth / 2 - 60, 10);
 }
 
 function playSwitch() {
@@ -31,10 +32,18 @@ function playSwitch() {
 
 function draw() {
   // clear(); background(0);  // creates cool pattern 
+
+
   var a = n * angleSlider.value();
   var r = scaleSlider.value() * sqrt(n);
   var x = r * cos(a) + width / 2 ;
   var y = r * sin(a) + height / 2;
+  red = n % 256;
+  g = 255;
+  b = 255;
+  c = color(red,g,b);
+  hx = "#" + hex(red,2) + hex(g,2) + hex(b,2);
+  button.style('background-color', c);
   fill(0);
   rect(50, 5, 120, 40);
   rect(60, 45, 90, 70);
