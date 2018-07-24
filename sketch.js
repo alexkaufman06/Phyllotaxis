@@ -20,11 +20,15 @@ function setup() {
   button = createButton("Play/Pause");
   button.mousePressed(playSwitch);
   button.position(window.innerWidth / 2 - 60, 10);
+
+  input = createInput();
+  input.position(20, 135);
 }
 
 function playSwitch() {
   if (play) {
     play = false;
+    input.value(n);
   } else {
     play = true;
   }
@@ -32,6 +36,7 @@ function playSwitch() {
 
 function draw() {
   // clear(); background(0);  // creates cool pattern 
+  // input.value(n);
 
 
   var a = n * angleSlider.value();
@@ -47,10 +52,12 @@ function draw() {
   fill(0);
   rect(50, 5, 120, 40);
   rect(60, 45, 90, 70);
+  rect(80, 45, 180, 70);
   fill(255);
-  textSize(20); 
+  textSize(20);
   text("Angle: " + angleSlider.value(), 30, 30);
-  text("Scale: " + scaleSlider.value(), 50, 110);
+  text("Scale: " + scaleSlider.value(), 10, 110);
+  text("N: " + n, 130, 110);
 
   if (play) {
     fill(n % 256, 255, 255); // can change n to a;
@@ -58,6 +65,8 @@ function draw() {
     ellipse(x, y, 4, 4); // 8, 8
     rect(26, 60, 120, 10);
     n++;
+  } else {
+    n = input.value();
   }
 
   rect(26, 60, 120, 10);
