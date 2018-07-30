@@ -22,7 +22,9 @@ function setup() {
   button.position(window.innerWidth / 2 - 60, 10);
 
   input = createInput();
-  input.position(20, 135);
+  input.value(n);
+  input.style('width', '50px');
+  // input.position(20, 135);
 }
 
 function playSwitch() {
@@ -37,8 +39,6 @@ function playSwitch() {
 function draw() {
   // clear(); background(0);  // creates cool pattern 
   // input.value(n);
-
-
   var a = n * angleSlider.value();
   var r = scaleSlider.value() * sqrt(n);
   var x = r * cos(a) + width / 2 ;
@@ -57,7 +57,14 @@ function draw() {
   textSize(20);
   text("Angle: " + angleSlider.value(), 30, 30);
   text("Scale: " + scaleSlider.value(), 10, 110);
-  text("N: " + n, 130, 110);
+
+  if (play) {
+    input.position(-20, -135);
+    text("N: " + n, 130, 110);
+  } else {
+    text("N:", 130, 110);
+    input.position(155, 94);
+  }
 
   if (play) {
     fill(n % 256, 255, 255); // can change n to a;
