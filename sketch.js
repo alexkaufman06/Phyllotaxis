@@ -1,4 +1,4 @@
-var n = 0; // could add slider to control n value as well
+var n = 0;
 var angleSlider;
 var play = false;
 var scaleSlider; // (how much the radius is changing)
@@ -13,18 +13,23 @@ function setup() {
   angleMode(DEGREES); // comment out for different effect
   colorMode(HSB);
   background(0);
-  angleSlider = createSlider(0, 360, 137.5, .1); // 137.3 for other pattern
+  angleSlider = createSlider(0, 360, 137.5, .1);
   angleSlider.position(20,40);
   scaleSlider = createSlider(0, 15, 4, .1);
   scaleSlider.position(20, 70);
   button = createButton("Play/Pause");
   button.mousePressed(playSwitch);
   button.position(window.innerWidth / 2 - 60, 10);
+
+  input = createInput();
+  input.value(n);
+  input.style('width', '50px');
 }
 
 function playSwitch() {
   if (play) {
     play = false;
+    input.value(n);
   } else {
     play = true;
   }
@@ -32,8 +37,7 @@ function playSwitch() {
 
 function draw() {
   // clear(); background(0);  // creates cool pattern 
-
-
+  // input.value(n);
   var a = n * angleSlider.value();
   var r = scaleSlider.value() * sqrt(n);
   var x = r * cos(a) + width / 2 ;
@@ -45,12 +49,19 @@ function draw() {
   hx = "#" + hex(red,2) + hex(g,2) + hex(b,2);
   button.style('background-color', c);
   fill(0);
-  rect(50, 5, 120, 40);
-  rect(60, 45, 90, 70);
+  rect(0, 0, 180, 150); // cover up controls
   fill(255);
-  textSize(20); 
+  textSize(20);
   text("Angle: " + angleSlider.value(), 30, 30);
   text("Scale: " + scaleSlider.value(), 50, 110);
+
+  if (play) {
+    input.position(-20, -135);
+    text("N: " + n, 55, 140);
+  } else {
+    text("N:", 55, 140);
+    input.position(80, 123);
+  }
 
   if (play) {
     fill(n % 256, 255, 255); // can change n to a;
@@ -58,6 +69,8 @@ function draw() {
     ellipse(x, y, 4, 4); // 8, 8
     rect(26, 60, 120, 10);
     n++;
+  } else {
+    n = input.value();
   }
 
   rect(26, 60, 120, 10);
