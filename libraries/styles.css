@@ -1,0 +1,7 @@
+body {padding: 0; margin: 0;}
+*:focus {outline:none}
+button {
+  cursor: pointer;
+  border-radius: .25rem;
+  padding: .375rem .75rem;
+}

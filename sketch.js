@@ -36,7 +36,7 @@ function playSwitch() {
 }
 
 function draw() {
-  // clear(); background(0);  // creates cool pattern 
+  // clear(); background(0);  // creates cool pattern
   // input.value(n);
   var a = n * angleSlider.value();
   var r = scaleSlider.value() * sqrt(n);
@@ -48,6 +48,7 @@ function draw() {
   c = color(red,g,b);
   hx = "#" + hex(red,2) + hex(g,2) + hex(b,2);
   button.style('background-color', c);
+  button.style('border-color', c);
   fill(0);
   rect(0, 0, 180, 150); // cover up controls
   fill(255);
