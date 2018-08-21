@@ -68,13 +68,12 @@ function draw() {
     fill(n % 256, 255, 255); // can change n to a;
     noStroke(); // comment out for different effect
     ellipse(x, y, 4, 4); // 8, 8
-    rect(26, 60, 120, 10);
     n++;
   } else {
     n = input.value();
   }
 
-  rect(26, 60, 120, 10);
+  rect(26, 60, 120, 5);
 }
 
 function windowResized() {
